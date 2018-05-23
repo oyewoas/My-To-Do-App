@@ -132,6 +132,16 @@ ul.todo li .buttons button {
     appearance: none;
 }
 
+ul.todo li .buttons button.complete span {
+    border-radius: 11px;
+    border: 1.5px solid #25b9;
+    transition: background 0.2s ease;
+}
+
+ul.todo li .buttons button.remove span .fill {
+    fill: #fff;
+}
+
 ul.todo li .buttons button:last-of-type:before {
     content: '';
     width: 1px;
@@ -142,11 +152,27 @@ ul.todo li .buttons button:last-of-type:before {
     background: #edf0f1;
 }
 
-ul.todo#completed li .buttons button.complete {
-    /* background: #25b99a; */
+ul.todo#completed li .buttons button.complete span {
+    background: rgba(84, 118, 187, 0.6);
     border: 4px;
 }
 
-ul.todo#completed li .buttons button.complete .fill {
+ul.todo#completed li .buttons button.complete span .fill {
     fill: blue;
+}
+
+ul.todo#completed:not(:empty) {
+    position: relative;
+    padding: 60px 0 0 0;
+}
+
+ul.todo#completed:not(:empty)::before {
+    content: '';
+    width: 150px;
+    height: 1px;
+    background: #d8e5e0;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    margin: 0 0 0 -75px;
 }
