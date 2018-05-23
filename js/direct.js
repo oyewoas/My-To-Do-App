@@ -10,10 +10,16 @@ document.getElementById('add').addEventListener('click', function() {
     var value = document.getElementById('item').value;
     if (value) {
         addItemTodo(value);
-        document.getElementById('item').value;
+        document.getElementById('item').value = '';
     }
 
 });
+
+function removeItem() {
+    var item = this.parentNode.parentNode;
+    var parent = item.parentNode;
+    parent.removeChild(item);
+}
 //add new item to todo list
 function addItemTodo(text) {
     var list = document.getElementById('todo');
@@ -26,6 +32,9 @@ function addItemTodo(text) {
     var remove = document.createElement('button');
     remove.classList.add('remove');
     remove.innerHTML = removeBot;
+
+    //Add click event to remove#
+    remove.addEventListener('click', removeItem);
 
     var complete = document.createElement('button');
     complete.classList.add('complete');
